@@ -7,11 +7,14 @@ on:
     paths:
       - "docs/**"
       - "src/**"
+      - "blog/**"
       - "docusaurus.config.js"
       - "sidebars.js"
       - "package.json"
       - "yarn.lock"
       - "package-lock.json"
+      - "versioned_docs/**"
+      - "versioned_sidebars/**"
 
 jobs:
   build-and-deploy:
