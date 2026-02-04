@@ -172,34 +172,6 @@ export type SelectBlockInputField<Key extends string = string> =
 </details>
 
 <details>
-<summary>Параметры поля `multiSelect`</summary>
-
-`multiSelect` Поле для выбора нескольких значений из списка
-
-```ts
-/**
- * Выпадающий список (множественный выбор)
- * @template Key - Тип ключа поля
- */
-export type MultiSelectBlockInputField<Key extends string = string> =
-  CommonBlockInputField<Key> & {
-    type: "multiselect";
-    /** Опции для выбора */
-    options: SelectOptions;
-    typeOptions?: {
-      /** Минимальное количество выбранных элементов */
-      minItems?: number;
-      /** Максимальное количество выбранных элементов */
-      maxItems?: number;
-      /** Разделитель для строкового представления */
-      delimiter?: string;
-    };
-  };
-```
-
-</details>
-
-<details>
 <summary>Параметры поля `keyValue`</summary>
 
 `keyValue` Поле для ввода пар "ключ-значение", полезно для создания параметров запроса
