@@ -1,0 +1,42 @@
+---
+sidebar_position: 7
+title: TypeScript SDK
+---
+
+<Admonition type="tip" icon={<FaCheckCircle />} title="Official SDK">
+ SDK является оффицальной библиотекой от команды infomaximum
+</Admonition>
+
+Позволяет типизированно писать интеграции
+
+Реализован класс URL для парсинга и манипуляции адресами внутри интеграций.
+Builder для создания API клиента, позволяет гибко настраивать HTTP,GraphQL и кастомные клиенты.
+Перехватчик ошибок onHttpError и onNetworkError
+
+import Admonition from '@theme/Admonition';
+import { FaCheckCircle } from "react-icons/fa";
+
+## Установка
+
+```bash
+npm install @infomaximum/integration-sdk
+```
+или 
+```bash
+yarn add -D @infomaximum/integration-sdk
+```
+:::warning
+Всегда выбирайте и закрепляйте правильную версию SDK, соответствующую версии proceset
+:::
+
+| SDK Version      | Proceset Version    |
+| ---------------- | --------------------|
+| 2.3.0            | 2503                |
+| 2.3.0            | 2504                |
+| 3.0.0-2          | 2505                |
+| 3.0.0-2          | 2506                |
+| 3.1.1            | 2507                |
+| 3.2.1            | 2508                |
+| 3.2.1            | 2509                |
+| 3.2.1            | 2510                |
+| 3.3.0            | 2511                |

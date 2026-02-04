@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 6
 title: Package-CLI
 description: Базовое описание сборщика
 ---

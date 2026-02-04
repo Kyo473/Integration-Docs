@@ -1,6 +1,6 @@
 {
-  "label": "Package-CLI",
-  "position": 6,
+  "label": "Обзор",
+  "position": 1,
   "link": {
     "type": "generated-index"
   }
