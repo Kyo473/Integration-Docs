@@ -190,6 +190,74 @@ export const basicConnect: IntegrationConnection<ICommonAuthData> = {
 ```
 </details>
 
+<details>
+<summary>Пример использования redirect</summary>
+
+```js
+redirect: (_service, bundle) =>
+  "https://login.microsoftonline.com/" +
+  bundle.authData.tenant_id +
+  "/oauth2/v2.0/authorize?" +
+  "response_type=code" +
+  "&client_id=" +
+  bundle.authData.client_id +
+  "&redirect_uri=" +
+  bundle.authData.redirect_url +
+  "&scope=User.Read Calendars.Read OnlineMeetingTranscript.Read.All OnlineMeetings.Read offline_access",
+```
+
+</details>
+
+<details>
+<summary>Пример использования saveFields</summary>
+
+:::danger
+`access_token`,`refresh_token`,`expiration_time` должны иметь именно такие названия при сохранении,иначе механизм рефреш не сработает.
+:::
+
+
+```js
+saveFields: (service, bundle) => {
+const body =
+  "code=" +
+  authCode +
+  "&client_id=" +
+  clientId +
+  "&redirect_uri=" +
+  bundle.authData.redirect_url +
+  "&client_secret=" +
+  clientSecret +
+  "&grant_type=authorization_code";
+
+const response = service.request<ArrayBuffer>({
+  url: `https://login.microsoftonline.com/${catalogIdentifier}/oauth2/v2.0/token`,
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  jsonBody: body,
+});
+const exchangeCode = JSON.parse(new TextDecoder().decode(response.response));
+
+const accTok = exchangeCode.access_token;
+if (!accTok) {
+  service.stringError(
+    "Не удалось выполнить обмен Authorization Code на access_token.\n" +
+      JSON.stringify(exchangeCode.response)
+  );
+}
+  return {
+    access_token: accTok,
+    refresh_token: exchangeCode.refresh_token,
+    expiration_time: exchangeCode.expires_in,
+  };
+},
+```
+
+</details>
+
+
+
 ## Поля ввода и их использование
 
 inputFields – это поля ввода, которые позволяют пользователю задавать параметры для блоков интеграции.
